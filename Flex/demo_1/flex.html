@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex</title>
+</head>
+<style>
+a, abbr, address, blockquote, body, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, form, h1, h2, h3, h4, h5, h6, html, iframe, img, ins, label, legend, li, object, ol, p, pre, q, small, span, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, ul {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}  
+html {
+    font-size: 62.5%;
+} 
+body {
+    margin: 0;
+    font-size: 1.2em;
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #f6f6f6 url(img/bg.gif) no-repeat;
+    color: #333;
+} 
+.container {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.main {
+    margin-top: 20px;
+}
+.row {
+    width: 100%;
+    max-width: 1140px;
+    min-width: 755px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.col, .eightcol, .elevencol, .fifteencol, .fivecol, .fourcol, .fourteencol, .ninecol, .onecol, .sevencol, .sixcol, .tencol, .thirteencol, .threecol, .twelvecol, .twocol {
+    margin-right: 1%;
+    float: left;
+}
+.elevencol, .middle-column {
+    width: 66%;
+}
+.big-middle-column {
+    font-size: 13px;
+}
+.article {
+    background: #fff;
+    margin: 0;
+    border: 1px solid #efefef;
+    border-bottom: 0;
+    margin-bottom: 20px;
+}
+.article-heading {
+    background: #fbfbfb;
+    border-bottom: 1px solid #efefef;
+    padding: 20px 30px 20px 30px;
+}
+h1, h2, h3, h4 {
+    font-size: 1em;
+}
+.archive-options h2, .article-heading h2 {
+    font-size: 2.6em;
+    margin: 0 0 .3em 0;
+}
+.article-body {
+    padding: 10px 10px 20px 10px;
+}
+li, ol, p, ul {
+    line-height: 1.5em;
+}
+.article-body p {
+    font-size: 13px;
+    line-height: 2em;
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif;
+}
+a {
+    color: #64854c;
+    text-decoration: none;
+    -o-transition-duration: .2s;
+    -o-transition-property: opacity;
+    -webkit-transition-duration: .2s;
+    -webkit-transition-property: opacity;
+}
+.article-body p a {
+    text-decoration: underline;
+}
+embed, img, object {
+    max-width: 100%;
+}
+img {
+    height: auto;
+}
+.article-body h2 {
+    font-size: 1.8em;
+    margin: 2px 0;
+    line-height: 1.8em;
+}
+pre {
+    margin: 15px auto;
+    font: 12px/20px Menlo,Monaco,Consolas,"Andale Mono","lucida console","Courier New",monospace;
+    white-space: pre-wrap;
+    word-break: break-all;
+    word-wrap: break-word;
+    border: 1px solid #ddd;
+    border-left-width: 4px;
+    background: #fbfbfb url(img/codecolorer_bg.gif) top;
+    padding: 10px 15px;
+}
+pre.prettyprint {
+    padding: 10px 15px;
+}
+.pun, .opn, .clo {
+    color: #660;
+}
+.pln {
+    color: #000;
+}
+.com {
+    color: #800;
+}
+blockquote {
+    background-color: #f3f7f0;
+    padding: 10px;
+    margin: 10px;
+    font-size: 13px;
+    line-height: 2em;
+}
+ol, ul {
+    list-style: none;
+}
+.article-body ul {
+    line-height: 140%;
+}
+.article-body ol, .article-body ul, .sidebar-box ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.article-body ol, .article-body ul {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+li, ol, p, ul {
+    line-height: 1.5em;
+}
+.article-body ol li, .article-body ul li {
+    font-size: 13px;
+    word-break: break-all;
+}
+.article-body ul li, .sidebar-box ul li {
+    padding: 0 0 0 1.5em;
+    margin: 0 0 1em 1em;
+    background-image: url(img/bullet.png);
+    background-repeat: no-repeat;
+    background-position: left .5em;
+}
+.article-body h3 {
+    font-size: 1.4em;
+    font-weight: 700;
+    margin: 8px 0;
+}
+
+</style>
+<body>
+<div class="container main">
+    <div class="row">
+        <div class="col middle-column big-middle-column">
+            <div class="article">
+                <div class="article-heading">
+                    <h2>Flex 布局教程：语法篇</h2>
+                    <h3><em>分类</em> <a href="#" title="编程技术">编程技术</a> </h3>
+                </div>
+                <div class="article-body">
+                    <div class="article-intro">
+                        <p>网页布局（layout）是CSS的一个重点应用。</p>
+                        <p><img title="" src="img/7bf8bed24a17fbebd3e171f9630dbccb.gif" alt=""></p>
+                        <p>布局的传统解决方案，基于<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box_model" target="_blank">盒状模型</a>，依赖&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display" target="_blank">display</a>属性 +&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position" target="_blank">position</a>属性 +&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/float" target="_blank">float</a>属性。它对于那些特殊布局非常不方便，比如，<a href="https://css-tricks.com/centering-css-complete-guide/" target="_blank">垂直居中</a>就不容易实现。</p>
+                        <p><img title="" src="img/5a7d00514af1e464221c677c15e8e990.png" alt=""></p>
+                        <p>2009年，W3C提出了一种新的方案—-Flex布局，可以简便、完整、响应式地实现各种页面布局。目前，它已经得到了所有浏览器的支持，这意味着，现在就能很安全地使用这项功能。</p>
+                        <p><img title="" src="img/8712d713c7d0b884a5cb9770efc422b4.jpg" alt=""></p>
+                        <p>Flex布局将成为未来布局的首选方案。本文介绍Flex布局的语法。</p>
+                        <p>以下内容主要参考了下面两篇文章：<a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">A Complete Guide to Flexbox</a>&nbsp;和&nbsp;<a href="https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties" target="_blank">A Visual Guide to CSS3 Flexbox Properties</a>。</p>
+                        <h2>一、Flex布局是什么？</h2>
+                        <p>Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。</p>
+                        <p>任何一个容器都可以指定为Flex布局。</p>
+                        <pre class="prettyprint prettyprinted"><span class="pun">.</span><span class="pln">box</span><span class="pun">{</span><span class="pln">  
+  display</span><span class="pun">:</span><span class="pln"> flex</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                        <p>行内元素也可以使用Flex布局。</p>
+                        <pre class="prettyprint prettyprinted" style=""><span class="pun">.</span><span class="pln">box</span><span class="pun">{</span><span class="pln">
+  display</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">inline</span><span class="pun">-</span><span class="pln">flex</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                        <p>Webkit内核的浏览器，必须加上-webkit前缀。</p>
+                        <pre class="prettyprint prettyprinted" style=""><span class="pun">.</span><span class="pln">box</span><span class="pun">{</span><span class="pln">
+  display</span><span class="pun">:</span><span class="pln"> </span><span class="pun">-</span><span class="pln">webkit</span><span class="pun">-</span><span class="pln">flex</span><span class="pun">;</span><span class="pln"> </span><span class="com">/* Safari */</span><span class="pln">
+  display</span><span class="pun">:</span><span class="pln"> flex</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                        <p>注意，设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。</p>
+                        <h2>二、基本概念</h2>
+                        <p>采用Flex布局的元素，称为Flex容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称”项目”。</p>
+                        <p><img title="" src="img/3791e575c48b3698be6a94ae1dbff79d.png" alt=""></p>
+                        <p>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；交叉轴的开始位置叫做cross start，结束位置叫做cross end。</p>
+                        <p>项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。</p>
+                        <h2>三、容器的属性</h2>
+                        <p>以下6个属性设置在容器上。</p>
+                        <blockquote>
+                            <ul>
+                                <li>flex-direction</li>
+                                <li>flex-wrap</li>
+                                <li>flex-flow</li>
+                                <li>justify-content</li>
+                                <li>align-items</li>
+                                <li>align-content</li>
+                            </ul>
+                        </blockquote>
+                        <h3>3.1 flex-direction属性</h3>
+                        <p>flex-direction属性决定主轴的方向（即项目的排列方向）。</p>
+                        <pre class="prettyprint prettyprinted" style=""><span class="pun">.</span><span class="pln">box </span><span class="pun">{</span><span class="pln">
+  flex</span><span class="pun">-</span><span class="pln">direction</span><span class="pun">:</span><span class="pln"> row </span><span class="pun">|</span><span class="pln"> row</span><span class="pun">-</span><span class="pln">reverse </span><span class="pun">|</span><span class="pln"> column </span><span class="pun">|</span><span class="pln"> column</span><span class="pun">-</span><span class="pln">reverse</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                        <p><img title="" src="img/0cbe5f8268121114e87d0546e53cda6e.png" alt=""></p>
+                        <p>它可能有4个值。</p>
+                        <blockquote>
+                            <ul>
+                                <li>row（默认值）：主轴为水平方向，起点在左端。</li>
+                                <li>row-reverse：主轴为水平方向，起点在右端。</li>
+                                <li>column：主轴为垂直方向，起点在上沿。</li>
+                                <li>column-reverse：主轴为垂直方向，起点在下沿。</li>
+                            </ul>
+                        </blockquote>
+                        <h3>3.2 flex-wrap属性</h3>
+                        <p>默认情况下，项目都排在一条线（又称”轴线”）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。</p>
+                        <p><img title="" src="img/903d5b7df55779c03f2687a7d4d6bcea.png" alt=""></p>
+                        <pre class="prettyprint prettyprinted" style=""><span class="pun">.</span><span class="pln">box</span><span class="pun">{</span><span class="pln">
+  flex</span><span class="pun">-</span><span class="pln">wrap</span><span class="pun">:</span><span class="pln"> nowrap </span><span class="pun">|</span><span class="pln"> wrap </span><span class="pun">|</span><span class="pln"> wrap</span><span class="pun">-</span><span class="pln">reverse</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                        <p>它可能取三个值。</p>
+                        <p>（1）nowrap（默认）：不换行。</p>
+                        <p><img title="" src="img/9da1f23965756568b4c6ea7124db7b9a.png" alt=""></p>
+                        <p>（2）wrap：换行，第一行在上方。</p>
+                        <p><img title="" src="img/3c6b3c8b8fe5e26bca6fb57538cf72d9.jpg" alt=""></p>
+                        <p>（3）wrap-reverse：换行，第一行在下方。</p>
+                        <p><img title="" src="img/fb4cf2bab8b6b744b64f6d7a99cd577c.jpg" alt=""></p>
+                        <h3>3.3 flex-flow</h3>
+                        <p>flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。</p>
+                        <pre class="prettyprint prettyprinted" style=""><span class="pun">.</span><span class="pln">box </span><span class="pun">{</span><span class="pln">
+  flex</span><span class="pun">-</span><span class="pln">flow</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">flex</span><span class="pun">-</span><span class="pln">direction</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">||</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">flex</span><span class="pun">-</span><span class="pln">wrap</span><span class="pun">&gt;;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                        <h3>3.4 justify-content属性</h3>
+                        <p>justify-content属性定义了项目在主轴上的对齐方式。</p>
+                        <pre class="prettyprint prettyprinted" style=""><span class="pun">.</span><span class="pln">box </span><span class="pun">{</span><span class="pln">
+  justify</span><span class="pun">-</span><span class="pln">content</span><span class="pun">:</span><span class="pln"> flex</span><span class="pun">-</span><span class="pln">start </span><span class="pun">|</span><span class="pln"> flex</span><span class="pun">-</span><span class="kwd">end</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> center </span><span class="pun">|</span><span class="pln"> space</span><span class="pun">-</span><span class="pln">between </span><span class="pun">|</span><span class="pln"> space</span><span class="pun">-</span><span class="pln">around</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                        <p><img title="" src="img/c55dfe8e3422458b50e985552ef13ba5.png" alt=""></p>
+                        <p>它可能取5个值，具体对齐方式与轴的方向有关。下面假设主轴为从左到右。</p>
+                        <blockquote>
+                            <ul>
+                                <li>flex-start（默认值）：左对齐</li>
+                                <li>flex-end：右对齐</li>
+                                <li>center： 居中</li>
+                                <li>space-between：两端对齐，项目之间的间隔都相等。</li>
+                                <li>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</li>
+                            </ul>
+                        </blockquote>
+                        <h3>3.5 align-items属性</h3>
+                        <p>align-items属性定义项目在交叉轴上如何对齐。</p>
+                        <pre class="prettyprint prettyprinted" style=""><span class="pun">.</span><span class="pln">box </span><span class="pun">{</span><span class="pln">
+  align</span><span class="pun">-</span><span class="pln">items</span><span class="pun">:</span><span class="pln"> flex</span><span class="pun">-</span><span class="pln">start </span><span class="pun">|</span><span class="pln"> flex</span><span class="pun">-</span><span class="kwd">end</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> center </span><span class="pun">|</span><span class="pln"> baseline </span><span class="pun">|</span><span class="pln"> stretch</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                        <p><img title="" src="img/2b0c39c7e7a80d5a784c8c2ca63cde17.png" alt=""></p>
+                        <p>它可能取5个值。具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下。</p>
+                        <blockquote>
+                            <ul>
+                                <li>flex-start：交叉轴的起点对齐。</li>
+                                <li>flex-end：交叉轴的终点对齐。</li>
+                                <li>center：交叉轴的中点对齐。</li>
+                                <li>baseline: 项目的第一行文字的基线对齐。</li>
+                                <li>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
+                            </ul>
+                        </blockquote>
+                        <h3>3.6 align-content属性</h3>
+                        <p>align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</p>
+                        <pre class="prettyprint prettyprinted" style=""><span class="pun">.</span><span class="pln">box </span><span class="pun">{</span><span class="pln">
+  align</span><span class="pun">-</span><span class="pln">content</span><span class="pun">:</span><span class="pln"> flex</span><span class="pun">-</span><span class="pln">start </span><span class="pun">|</span><span class="pln"> flex</span><span class="pun">-</span><span class="kwd">end</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> center </span><span class="pun">|</span><span class="pln"> space</span><span class="pun">-</span><span class="pln">between </span><span class="pun">|</span><span class="pln"> space</span><span class="pun">-</span><span class="pln">around </span><span class="pun">|</span><span class="pln"> stretch</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                        <p><img title="" src="img/f10918ccb8a13247c9d47715a2bd2c33.png" alt=""></p>
+                        <p>该属性可能取6个值。</p>
+                        <blockquote>
+                            <ul>
+                                <li>flex-start：与交叉轴的起点对齐。</li>
+                                <li>flex-end：与交叉轴的终点对齐。</li>
+                                <li>center：与交叉轴的中点对齐。</li>
+                                <li>space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。</li>
+                                <li>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</li>
+                                <li>stretch（默认值）：轴线占满整个交叉轴。</li>
+                            </ul>
+                        </blockquote>
+                        <h3>四、项目的属性</h3>
+                        <p>以下6个属性设置在项目上。</p>
+                        <blockquote>
+                            <ul>
+                                <li>order</li>
+                                <li>flex-grow</li>
+                                <li>flex-shrink</li>
+                                <li>flex-basis</li>
+                                <li>flex</li>
+                                <li>align-self</li>
+                            </ul>
+                        </blockquote>
+                        <h3>4.1 order属性</h3>
+                        <p>order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。</p>
+                        <pre class="prettyprint prettyprinted" style=""><span class="pun">.</span><span class="pln">item </span><span class="pun">{</span><span class="pln">
+  order</span><span class="pun">:</span><span class="pln"> </span><span class="str">&lt;integer&gt;</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                        <p><img title="" src="img/59e399c72daafcfcc20ede36bf32f266.png" alt=""></p>
+                        <h3>4.2 flex-grow属性</h3>
+                        <p>flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
+                        <pre class="prettyprint prettyprinted" style=""><span class="pun">.</span><span class="pln">item </span><span class="pun">{</span><span class="pln">
+  flex</span><span class="pun">-</span><span class="pln">grow</span><span class="pun">:</span><span class="pln"> </span><span class="str">&lt;number&gt;</span><span class="pun">;</span><span class="pln"> </span><span class="com">/* default 0 */</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                        <p><img title="" src="img/f41c08bb35962ed79e7686f735d6cd78.png" alt=""></p>
+                        <p>如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
+                        <h3>4.3 flex-shrink属性</h3>
+                        <p>flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
+                        <pre class="prettyprint prettyprinted" style=""><span class="pun">.</span><span class="pln">item </span><span class="pun">{</span><span class="pln">
+  flex</span><span class="pun">-</span><span class="pln">shrink</span><span class="pun">:</span><span class="pln"> </span><span class="str">&lt;number&gt;</span><span class="pun">;</span><span class="pln"> </span><span class="com">/* default 1 */</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                        <p><img title="" src="img/240d3e960043a729bb3ff5e34987904f.jpg" alt=""></p>
+                        <p>如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
+                        <p>负值对该属性无效。</p>
+                        <h3>4.4 flex-basis属性</h3>
+                        <p>flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</p>
+                        <pre class="prettyprint prettyprinted" style=""><span class="pun">.</span><span class="pln">item </span><span class="pun">{</span><span class="pln">
+  flex</span><span class="pun">-</span><span class="pln">basis</span><span class="pun">:</span><span class="pln"> </span><span class="str">&lt;length&gt;</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="kwd">auto</span><span class="pun">;</span><span class="pln"> </span><span class="com">/* default auto */</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                        <p>它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。</p>
+                        <h3>4.5 flex属性</h3>
+                        <p>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</p>
+                        <pre class="prettyprint prettyprinted" style=""><span class="pun">.</span><span class="pln">item </span><span class="pun">{</span><span class="pln">
+  flex</span><span class="pun">:</span><span class="pln"> none </span><span class="pun">|</span><span class="pln"> </span><span class="pun">[</span><span class="pln"> </span><span class="pun">&lt;</span><span class="str">'flex-grow'</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">&lt;</span><span class="str">'flex-shrink'</span><span class="pun">&gt;?</span><span class="pln"> </span><span class="pun">||</span><span class="pln"> </span><span class="pun">&lt;</span><span class="str">'flex-basis'</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">]</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                        <p>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
+                        <p>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。</p>
+                        <h3>4.6 align-self属性</h3>
+                        <p>align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</p>
+                        <pre class="prettyprint prettyprinted" style=""><span class="pun">.</span><span class="pln">item </span><span class="pun">{</span><span class="pln">
+  align</span><span class="pun">-</span><span class="kwd">self</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">auto</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> flex</span><span class="pun">-</span><span class="pln">start </span><span class="pun">|</span><span class="pln"> flex</span><span class="pun">-</span><span class="kwd">end</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> center </span><span class="pun">|</span><span class="pln"> baseline </span><span class="pun">|</span><span class="pln"> stretch</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></pre>
+                        <p><img title="" src="img/55b19171b8b6b9487d717bf2ecbba6de.png" alt=""></p>
+                        <p>该属性可能取6个值，除了auto，其他都与align-items属性完全一致。</p>
+                        <blockquote>
+                                <p>来源：http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
+</body>
+</html>
